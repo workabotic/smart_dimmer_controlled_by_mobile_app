@@ -65,7 +65,7 @@ void IRAM_ATTR crossing_zero_isr_handler(void *arg)
 
     /* Rising edge detected */
     if (current_state && !is_crossing_zero) {
-        /* Turnoff the active trigger */
+        /* Turn off the active trigger */
         ret = gpio_set_level(OUTPUT_PIN, 0);
         ESP_ERROR_CHECK(ret);
 
@@ -118,7 +118,7 @@ static void trigger_timer_callback(void *arg)
  *
  * This function initializes and manages the operation of a smart dimmer 
  * system. It configures timers, GPIO pins, interrupt service routines, 
- * and tasks to controlthe brightness of a lighting system based on 
+ * and tasks to control the brightness of a lighting system based on 
  * zero-crossing detection. The system adjusts the brightness of the lights 
  * according to the detected brightness level and zero-crossing timing.
  *
@@ -156,7 +156,7 @@ void smart_dimmer_control(void *arg)
     ret = gpio_set_direction(OUTPUT_PIN, GPIO_MODE_OUTPUT);
     ESP_ERROR_CHECK(ret);
 
-    /* Infinity loop */
+    /* Infinite loop */
     for (;;) {
         /* Suspend the task until it is resumed externally */
         vTaskSuspend(NULL);
@@ -347,7 +347,7 @@ void app_main(void)
         ESP_ERROR_CHECK(ret);
     }
 
-    /* Initialize WiFi in AP mode */
+    /* Initialize Wi-Fi in AP mode */
     wifi_ap_init();
 
     /* Initialize the HTTP server */
